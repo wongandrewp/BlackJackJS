@@ -44,7 +44,36 @@ class Deck {
       this.cards[j] = x
     }
   }
+  isLowOnCards () {
+    if (this.cards.length < 26) {
+      return true
+    } else { return false }
+  }
 }
+// class Hand {
+//   constructor () {
+//     this.cards = []
+//   }
+//   calculateHandValue () {
+//     let value = 0
+//     for (let i = 0; i < this.cards.length; i++) {
+//       value += this.cards[i].value
+//     }
+//     return value
+//   }
+//   isBusted () {
+
+//   }
+//   hasBlackJack () {
+
+//   }
+// }
+// class PlayerHand extends Hand{
+
+// }
+// class DealerHand extends Hand{
+
+// }
 
 class Dealer {
   constructor (deck) {
@@ -62,15 +91,31 @@ class Dealer {
   }
   calculatePlayersHandValue () {
     let value = 0
+    let aces = 0
     for (let i = 0; i < this.playersHand.length; i++) {
+      if (this.playersHand[i].isAce === true) {
+        aces++
+      }
       value += this.playersHand[i].value
+    }
+    if (value > 21 && aces > 0) {
+      value -= 10
+      aces--
     }
     return value
   }
   calculateDealersHandValue () {
     let value = 0
+    let aces = 0
     for (let i = 0; i < this.hand.length; i++) {
+      if (this.hand[i].isAce === true) {
+        aces++
+      }
       value += this.hand[i].value
+    }
+    if (value > 21 && aces > 0) {
+      value -= 10
+      aces--
     }
     return value
   }
@@ -331,6 +376,9 @@ deck.buildDeck()
 var dealer = new Dealer(deck)
 
 function play (dealer) {
+  if (deck.isLowOnCards()) {
+    deck.buildDeck()
+  }
   console.log('cards in deck' + dealer.deck.cards.length)
   display.innerHTML = ''
   dealer.dealHandToSelf(dealer.deck.surrenderCard(), dealer.deck.surrenderCard())
