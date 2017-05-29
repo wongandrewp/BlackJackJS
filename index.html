@@ -24,14 +24,28 @@
 
     <section id="menu">
       <ul>
-        <li><button type="button" class="btn btn-primary" onclick="play(dealer)">Play</button></li>
-        <li><button type="button" class="btn btn-primary" onclick="hitPlayer(dealer)">Hit</button></li>
-        <li><button type="button" class="btn btn-primary" onclick="stay(dealer)">Stay</button></li>
+        <li><button id = 'play' type="button" class="btn btn-primary" onclick="play(dealer)">Play</button></li>
+        <li><button id = 'hit' disabled = true type="button" class="btn btn-primary" onclick="hitPlayer(dealer)">Hit</button></li>
+        <li><button id = 'stay' disabled = true type="button" class="btn btn-primary" onclick="stay(dealer)">Stay</button></li>
       </ul>
     </section>
 
     <section id="main">
-    	<div id="display"></div>
+        <div id="display"></div>
+    	<div id="hands">
+            <img id = "dealerCardImageOne" src = "./images/blank.png" alt= "Dealer Card One"/>
+            <img id = "dealerCardImageTwo" src = "./images/blank.png" alt= "Dealer Card Two"/>
+            <img id = "dealerCardImageThree" src = "./images/blank.png" alt= "Dealer Card Three"/>
+            <img id = "dealerCardImageFour" src = "./images/blank.png" alt= "Dealer Card Four"/>
+            <img id = "dealerCardImageFive" src = "./images/blank.png" alt= "Dealer Card Five"/>
+            <br/>
+            <img id = "playerCardImageOne" src = "./images/blank.png" alt= "Player Card One"/>
+            <img id = "playerCardImageTwo" src = "./images/blank.png" alt= "Player Card Two"/>
+            <img id = "playerCardImageThree" src = "./images/blank.png" alt= "Player Card Three"/>
+            <img id = "playerCardImageFour" src = "./images/blank.png" alt= "Player Card Four"/>
+            <img id = "playerCardImageFive" src = "./images/blank.png" alt= "Player Card Five"/>
+        </div>
+
     </section>
 
  	<script type="text/javascript" src="js/script.js"></script>
