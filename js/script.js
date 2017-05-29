@@ -319,8 +319,8 @@ describe('testHitPlayer', function () {
   dealer.playersHand = []
   dealer.playersHand.push(new Card('2', 'HEARTS', 2))
   dealer.playersHand.push(new Card('10', 'HEARTS', 10))
-
   hitPlayer(dealer)
+  display.innerHTML = ''
   it('player hit', function () {
     expect(dealer.playersHand.length).toBe(3)
   })
@@ -374,3 +374,5 @@ function stay (dealer) {
     display.innerHTML += 'PLAYER WON'
   }
 }
+
+// TODO refill deck if empty, make aces low in hand calculation, make hand class
