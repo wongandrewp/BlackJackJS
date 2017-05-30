@@ -253,9 +253,10 @@ function displayStayAlert (dealer) {
     display.innerHTML += 'DEALER BUSTED' + '<br/>'
   } else if (dealer.dealerHit21() === true) {
     display.innerHTML += 'DEALER HIT 21!' + '<br/>'
+  } else {
+    let winner = dealer.determineWinner()
+    display.innerHTML += winner.toUpperCase() + ' WON'
   }
-  let winner = dealer.determineWinner()
-  display.innerHTML += winner.toUpperCase() + ' WON'
 }
 
 // TESTS ******************************* TESTS ************************
