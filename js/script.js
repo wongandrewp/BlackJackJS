@@ -191,7 +191,9 @@ function dealInitialHands (dealer) {
   let dealerCardOne = dealer.deck.surrenderCard()
   let dealerCardTwo = dealer.deck.surrenderCard()
   dealer.dealHandToSelf(dealerCardOne, dealerCardTwo)
-  dealerCardImageOne.src = dealerCardOne.image
+  // dealerCardImageOne.src = dealerCardOne.image
+  dealerCardImageOne.src = ''
+  dealerCardImageOne.alt = 'HIDDEN'
   dealerCardImageTwo.src = dealerCardTwo.image
   console.log('d' + dealerCardOne.image)
   console.log('d' + dealerCardTwo.image)
@@ -217,9 +219,9 @@ function hitPlayer (dealer) {
 function displayHitAlert (card, dealer) {
   display.innerHTML += card.name + ' Recieved, new hand value: ' + dealer.calculatePlayersHandValue() + '<br />'
   if (dealer.playerBusted() === true) {
-    display.innerHTML += 'PLAYER BUSTED'
+    display.innerHTML += 'PLAYER BUSTED' + '<br/>'
   } else if (dealer.playerHit21() === true) {
-    display.innerHTML += 'PLAYER HIT BLACKJACK!'
+    display.innerHTML += 'PLAYER HIT 21!' + '<br/>'
   }
 }
 
@@ -241,15 +243,16 @@ function stay (dealer) {
   hitButton.disabled = true
   stayButton.disabled = true
   dealer.takeTurn()
+  dealerCardImageOne.src = dealer.hand[0].image
   displayStayAlert(dealer)
 }
 
 function displayStayAlert (dealer) {
   display.innerHTML += 'Dealer final hand value: ' + dealer.calculateDealersHandValue() + '<br/>'
   if (dealer.dealerBusted() === true) {
-    display.innerHTML += 'DEALER BUSTED'
-  } else if (dealer.playerHit21() === true) {
-    display.innerHTML += 'DEALER HIT BLACKJACK!'
+    display.innerHTML += 'DEALER BUSTED' + '<br/>'
+  } else if (dealer.dealerHit21() === true) {
+    display.innerHTML += 'DEALER HIT 21!' + '<br/>'
   }
   let winner = dealer.determineWinner()
   display.innerHTML += winner.toUpperCase() + ' WON'
